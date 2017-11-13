@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <button ion-button (click)="startListening()">Start Listening</button>
+  <ion-list>
+    <ion-item *ngFor="let matche of matches | slice:0:1" text-wrap>
+      {{ matche }}
+      <button ion-button (click)="readTranslation(matche)">Translate</button>
+      {{ sentenceTrad }}
+    </ion-item>
+  </ion-list>
+
+  <form [formGroup]="translatorForm" (ngSubmit)="onSubmit">
+
+    <ion-select [formControl] = "from">
+      <ion-option *ngFor= "let language of languages " [value]="language.code"> {{language.name}}</ion-option>
+    </ion-select>
+
+    <ion-select [formControl] = "to">
+        <ion-option *ngFor= "let language of languages " [value]="language.code"> {{language.name}}</ion-option>
+    </ion-select>
+
+    <button ion-button >Set languages</button>
+
+  </form>
+  
+  
+</ion-content>
+
+
+
+
+
